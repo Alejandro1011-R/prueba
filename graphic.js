@@ -1,5 +1,5 @@
 let data;
-fetch('./coordinates.json').then(response => response.json()).then(dat => {
+fetch('coordinates.json').then(response => response.json()).then(dat => {
   data = dat;
 });
 
