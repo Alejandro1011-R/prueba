@@ -59,9 +59,9 @@
   
   <style>
     body {
-      display: flex;
-      flex-direction: column;
+     display: contents;
     
+      
       justify-content: center;
       height: auto;
       margin: 0;
@@ -237,32 +237,39 @@
       
     }
     
-    
-    
-    #pie-container {
+    #button2 button {
       display: flex;
-      justify-content: space-around;
-      align-items: center;
-      max-width: 100%;
-      margin: 0 auto;
+      flex-direction: row;
+      margin-right: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+     
+      
+    }
+    #chartContainer2 {
+      flex-direction: row;
+      flex-wrap: wrap;
+       justify-content: space-around; 
+      align-items: stretch; 
+      margin: 20px; 
       padding: 10px;
-      overflow: hidden;
+     
+      
     }
-    
-    .charts-container {
+
+    .class-chart-container{
       display: flex;
-      justify-content: space-between; 
-      width: 100%;
+      flex-direction: row;
+
     }
     
-    .class-chart-container {
-      margin-top: 20px;
-      width: 48%; 
-      height: auto;
-      max-width: 100%;
-      margin: 0 auto;
-    }
     
+    
+    
+    
+    
+    
+
     .btn {
       align-items: center;
       appearance: none;
@@ -353,12 +360,12 @@
   </div>
 
   
-  <div id="button2" class="btn">
+  <div id="button2">
     
   </div>
 
   
-  <div id="pie-container" class="chart-container"></div>
+  <div id="chartContainer2" class="charts-container"></div>
 
   <div id="coral-blanqueado2">
     <p>Durante este proceso se ven afectadas significativamente la composición de simbiontes, y se evidencia la dominancia en las comunidades de bacterias en los corales ya blanqueados. Los simbiontes experimentan alteraciones funcionales en respuesta al estrés por calor estas alteraciones dan como resultado un metabolismo energético anormal, lo que potencialmente podría comprometer la salud y la resistencia de los simbiontes. Las altas temperaturas también brindan claras ventajas para los patógenos de los corales, lo que lleva a un aumento de las enfermedades en el coral.</p>
@@ -382,7 +389,7 @@
 
   
 
-  <div id="buttons" class= "btn">
+  <div id="buttons" >
     
   </div>
   
@@ -442,43 +449,49 @@ fetch('./oceanos.json')
 
 function createCharts(result) {
   const buttonsDiv = document.getElementById('buttons');
-  const chartContainer = document.getElementById('chartContainer');
+  const container = document.getElementById('chartContainer');
 
   Object.keys(result).forEach(className => {
-    const button = createButton(className, chartContainer);
+    const button = createButton(className, container);
     buttonsDiv.appendChild(button);
 
-    const chart = createChart(className, result[className]);
-    chartContainer.appendChild(chart);
+    const chartContainer = createContainer(className, container);
+    container.appendChild(chartContainer);
 
-    button.classList.add('btn');
-  });
+    createChart(className, result[className], chartContainer);
+});
 }
 
-function createButton(className, chartContainer) {
+function createButton(className, container) {
   const button = document.createElement('button');
   button.textContent = `${className}`;
   button.addEventListener('click', () => {
-    // Ocultar todos los gráficos
-    const allCharts = document.querySelectorAll('.class-chart');
-    allCharts.forEach(chart => chart.style.display = 'none');
+    // Ocultar todos los contenedores
+    const allContainers = document.querySelectorAll('.class-container');
+    allContainers.forEach(container => container.style.display = 'none');
 
-    // Mostrar el gráfico correspondiente
-    const chartToShow = document.getElementById(`chart-${className}`);
-    chartToShow.style.display = 'block';
+    // Mostrar el contenedor correspondiente
+    const containerToShow = document.getElementById(`container-${className}`);
+    containerToShow.style.display = 'block';
   });
 
   return button;
 }
 
-function createChart(className, classData) {
-  const chartContainer = document.createElement('div');
-  chartContainer.className = 'class-chart-container';
+function createContainer(className, parentContainer) {
+  const container = document.createElement('div');
+  container.className = 'class-container';
+  container.id = `container-${className}`;
+  container.style.display = 'none'; // Ocultar el contenedor inicialmente
 
+  return container;
+}
+
+function createChart(className, classData, container) {
   const graphic = document.createElement('canvas');
   graphic.width = 400;
   graphic.height = 300;
-  chartContainer.appendChild(graphic);
+  container.appendChild(graphic);
 
   const ctx = graphic.getContext("2d");
   const gradient = ctx.createLinearGradient(0, 0, 0, graphic.height);
@@ -505,12 +518,6 @@ function createChart(className, classData) {
       }
     }
   });
-
-  chartContainer.style.display = 'none';
-  chartContainer.id = `chart-${className}`;
-  chartContainer.className = 'class-chart';
-
-  return chartContainer;
 }
 
 
@@ -587,7 +594,7 @@ slider.addEventListener('input', () => {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
     
-      // Colorea las regiones según la propiedad 'coralblchp'
+      
       L.geoJSON(geoJsonData, {
         style: feature => {
           const coralblchp = feature.properties.coralblchp;
@@ -626,39 +633,24 @@ fetch('./caracteristicas.json')
     createCharts(corales_caract);
   })
   .catch(error => console.error('Error al cargar el JSON:', error));
-document.addEventListener('DOMContentLoaded', () => {
-  const button2 = document.getElementById('button2');
-  button2.classList.add('btn');
-  
-  
-  // Evento de clic para el botón
-  button2.addEventListener('click', toggleChart);
-  });
-function createCharts(data) {
-  const pieContainer = document.getElementById('pie-container');
-  const buttonContainer = document.getElementById('button2');
-  
-  const chartsContainer = document.createElement('div');
-  chartsContainer.className = 'charts-container';
-  
-  // Crear gráficos y agregarlos al contenedor
-  Object.keys(data).forEach(className => {
-    const chart = createChart(className, data[className][0]);
-    chartsContainer.appendChild(chart);
-  });
-  
-  pieContainer.appendChild(chartsContainer);
-  
-  // Crear el botón y asignar evento de alternancia
-  const button = createToggleButton(chartsContainer, data);
-  buttonContainer.appendChild(button);
-}
 
-function createChart(className, classData) {
-  const chartContainer = document.createElement('div');
+
+  function createCharts(result) {
+    const pieContainer = document.getElementById('chartContainer2');
+
+  Object.keys(result).forEach(className => {
+    const chart = createChart(className, result[className][0]);
+    pieContainer.appendChild(chart);
+  });
+  }
+
+  function createChart(className, classData) {
+    const chartContainer = document.createElement('div');
     chartContainer.className = 'class-chart-container';
   
     const graphic = document.createElement('canvas');
+    graphic.width = 150; 
+    graphic.height = 150; 
     chartContainer.appendChild(graphic);
   
     const ctx = graphic.getContext("2d");
@@ -678,42 +670,17 @@ function createChart(className, classData) {
       options: {
         plugins: {
           datalabels: {
-            formatter: (value, context) => '', // Evitar que aparezcan las descripciones de los colores
+            formatter: (value, context) => {
+              const label = context.chart.data.labels[context.dataIndex];
+              return `${label}: ${value}`;
+            },
+            color: '#fff',
+            display: 'auto',
+            font: {
+              size: 10, 
+             },
           }
-        },
-        tooltips: {
-          enabled: false, // Desactivar las tooltips predeterminadas
-          custom: (tooltipModel) => {
-            const tooltipEl = document.getElementById('chartjs-tooltip');
-  
-            if (!tooltipEl) {
-              const newTooltip = document.createElement('div');
-              newTooltip.id = 'chartjs-tooltip';
-              newTooltip.style.position = 'absolute';
-              newTooltip.style.background = 'rgba(0, 0, 0, 0.7)';
-              newTooltip.style.color = '#fff';
-              newTooltip.style.borderRadius = '5px';
-              newTooltip.style.padding = '5px';
-              document.body.appendChild(newTooltip);
-            }
-  
-            if (tooltipModel.opacity === 0) {
-              tooltipEl.style.opacity = 0;
-              return;
-            }
-  
-            const tooltipText = className; // Usar el nombre de la clase como texto
-            tooltipEl.style.opacity = 1;
-            tooltipEl.innerHTML = tooltipText;
-            tooltipEl.style.width = 'auto'; 
-            tooltipEl.style.left = `${tooltipModel.caretX}px`;
-            tooltipEl.style.top = `${tooltipModel.caretY - 30}px`; 
-            tooltipEl.style.transform = 'translateX(-50%)'; 
-          },
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-        aspectRatio: 1,
+        }
       }
     });
   
@@ -723,64 +690,15 @@ function createChart(className, classData) {
     return chartContainer;
   }
   
-  
-
-function getRandomColors(numColors) {
-  const colors = [];
-  for (let i = 0; i < numColors; i++) {
-    const hue = (i * 137.508) % 360;
-    colors.push(`hsl(${hue}, 70%, 50%)`);
-  }
-  return colors;
-}
-
-
-function createToggleButton(chartsContainer, result) {
-  const button = document.createElement('button');
-  button.textContent = 'Cambiar Gráficas';
-  button.addEventListener('click', () => {
-    // Ocultar todas las gráficas
-    const allCharts = chartsContainer.querySelectorAll('.class-chart');
-    allCharts.forEach(chart => chart.style.display = 'none');
-
-    // Mostrar la siguiente gráfica
-    const visibleChart = chartsContainer.querySelector('.class-chart:not([style*="none"])');
-    if (visibleChart) {
-      let nextChart = visibleChart.nextElementSibling;
-      if (!nextChart) {
-        // Si no hay siguiente, mostrar la primera
-        nextChart = chartsContainer.querySelector('.class-chart');
-      }
-      nextChart.style.display = 'block';
+  function getRandomColors(numColors) {
+    const colors = [];
+    for (let i = 0; i < numColors; i++) {
+      const hue = (i * 137.508) % 360;
+      colors.push(`hsl(${hue}, 70%, 50%)`);
     }
-  });
-
-  return button;
-}
-
-
-function toggleChart() {
-  const chartsContainer = document.querySelector('.charts-container');
-  const chart1 = chartsContainer.children[0];
-  const chart2 = chartsContainer.children[1];
-
-  // Alternar entre mostrar uno y ocultar el otro
-  if (chart1.style.display === 'none') {
-    chart1.style.display = 'flex';
-    chart2.style.display = 'none';
-    this.textContent = 'Mostrar Gráfico 1';
-  } else {
-    chart1.style.display = 'none';
-    chart2.style.display = 'flex';
-    this.textContent = 'Mostrar Gráfico 2';
+    return colors;
   }
 
-  if (this.textContent === 'Mostrar Gráfico 1') {
-  this.textContent = 'Coral Sano';
-} else {
-  this.textContent = 'Coral Blanqueado';
-}
-}
 
   </script>
 
@@ -789,13 +707,13 @@ function toggleChart() {
 
 const cubaCenter = [21.5218, -77.7812];
 
-// Añade un fondo de mapa (puedes elegir otro proveedor)
+
 const map2 = L.map('map2', {
-  center: cubaCenter, // Centra el mapa en Cuba
-  zoom: 7, // Establece el nivel de zoom inicial
-  maxBounds: L.latLngBounds([19.5, -85.0], [23.5, -74.0]), // Establece límites para Cuba
-  maxZoom: 10, // Establece el zoom máximo permitido
-  minZoom: 5, // Establece el zoom mínimo permitido
+  center: cubaCenter, 
+  zoom: 7, 
+  maxBounds: L.latLngBounds([19.5, -85.0], [23.5, -74.0]), 
+  maxZoom: 10, 
+  minZoom: 5, 
 });
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -803,8 +721,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map2);
 
 const getColorForBleaching = percent => {
-  // Asegurar que los valores de r, g, y b estén dentro del rango permitido (0-255)
-  const r = Math.min(255, Math.max(0, 255));
+   const r = Math.min(255, Math.max(0, 255));
   const g = Math.min(255, Math.max(0, Math.round(255 - (percent * 2.55))));
   const b = Math.min(255, Math.max(0, 0));
   return `rgb(${r}, ${g}, ${b})`;
@@ -816,7 +733,6 @@ fetch('./location.json')
   .then(dat => {
     data2 = dat;
 
-    // Mueve el código que utiliza 'result' aquí
     if (data2 && data2.locations) {
       data2.locations.forEach(element => {
         const { latitud, longitud, percent_bleaching, name } = element;
