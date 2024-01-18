@@ -1,6 +1,6 @@
-let data;
+let data2;
 fetch('./location.json').then(response => response.json()).then(dat => {
-  data = dat;
+  data2 = dat;
 });
 
 const cubaCenter = [21.5218, -77.7812];
