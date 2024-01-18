@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.zoomify/dist/leaflet.zoomify.css" />
  
-<link rel="stylesheet" href="style.css">    
+<!-- <link rel="stylesheet" href="style.css">     -->
 
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
@@ -54,6 +54,8 @@
   <script src="https://unpkg.com/leaflet.vectorgrid/dist/Leaflet.VectorGrid.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 
   <button id="btn">
     
@@ -168,6 +170,261 @@
   <script type="module" src="grafico3.js"></script>
 
   <script type="module" src="mapaCuba.js"></script>
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+    
+      justify-content: center;
+      height: auto;
+      margin: 0;
+      padding: 0;
+    
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    
+    #introduction-container {
+      margin-left: 24px;
+      margin-right: 24px;
+     
+      font-size: 24px;
+      text-align: justify;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      
+     
+    }
+    #coral-blanqueado1 {
+      margin-left: 24px;
+      margin-right: 24px;
+     
+      font-size: 24px;
+      text-align: justify;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      
+    }
+    #coral-blanqueado2 {
+      margin-left: 24px;
+      margin-right: 24px;
+     
+      font-size: 24px;
+      text-align: justify;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+     
+    }
+    #importancia {
+      margin-left: 24px;
+      margin-right: 24px;
+     
+      font-size: 24px;
+      text-align: justify;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+     
+    }
+    #Cuba {
+      margin-left: 24px;
+      margin-right: 24px;
+     
+      font-size: 24px;
+      text-align: justify;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+     
+    }
+    #conclusion {
+      margin-left: 24px;
+      margin-right: 24px;
+     
+      font-size: 24px;
+      text-align: justify;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+     
+    }
+    
+    #image-container {
+      width: auto;
+      height: auto;
+      margin: auto;
+    }
+    
+    #txt1 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+    }
+    #temp {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+    }
+    #mapa {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+    }
+    #mapa2 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+    }
+    .image {
+      position: relative;
+      margin: auto;
+      max-width: 100%;
+    
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    
+    
+    h2 {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      color: white; 
+      text-align: center;
+      font-size: 3vw; 
+    }
+    
+     
+    #slider {
+      width: 80%;
+      margin-top: 20px;
+      margin: auto;
+      align-self: center;
+    }
+    
+    #map {
+      width: 100%;
+      height: 400px; 
+    }
+    
+    
+    
+    .circle-marker {
+      fill-opacity: 0.8;
+      stroke: none;
+    }
+    
+    
+    .leaflet-popup-content {
+      color: #333;
+      font-size: 14px;
+    }
+    
+    
+    
+    #buttons button {
+      display: flex;
+      flex-direction: row;
+      margin-right: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+     
+      
+    }
+    
+    
+    
+    #pie-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 10px;
+      overflow: hidden;
+    }
+    
+    .charts-container {
+      display: flex;
+      justify-content: space-between; 
+      width: 100%;
+    }
+    
+    .class-chart-container {
+      margin-top: 20px;
+      width: 48%; 
+      height: auto;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    .btn {
+      align-items: center;
+      appearance: none;
+      background-color: #EEF2FF;
+      border-radius: 8px;
+      border-width: 2px;
+      border-color: #536DFE;
+      box-shadow: rgba(83, 109, 254, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+      box-sizing: border-box;
+      color: #536DFE;
+      cursor: pointer;
+      display: inline-flex;
+      font-family: "JetBrains Mono", monospace;
+      height: 56px;
+      justify-content: center;
+      line-height: 1;
+      list-style: none;
+      overflow: hidden;
+      padding-left: 24px;
+      padding-right: 24px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: box-shadow 0.15s, transform 0.15s;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      will-change: box-shadow, transform;
+      font-size: 20px;
+      white-space: pre-line;
+    }
+    
+    .btn:focus {
+      outline: none;
+      box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(83, 109, 254, 0.4) 0 2px 4px, rgba(83, 109, 254, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    }
+    
+    .btn:hover {
+      box-shadow: rgba(83, 109, 254, 0.3) 0 4px 8px, rgba(83, 109, 254, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+      transform: translateY(-2px);
+    }
+    
+    .btn:active {
+      box-shadow: #D6D6E7 0 3px 7px inset;
+      transform: translateY(2px);
+    }
+  </style>
 </body>
 </html>
 
