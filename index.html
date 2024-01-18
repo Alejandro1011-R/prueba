@@ -436,7 +436,56 @@
   
   <script type="module" src="graphic.js"></script>
 
-  <script type="module" src="grafico3.js"></script>
+  <script type="module">
+    const data = getData();
+
+async function getData() {
+  const data = await $.getJSON('../coordinates.geojson');
+  return data;
+}
+
+
+data.then(createMap);
+
+function createMap(geoJsonData) {
+  const map = L.map('map', {
+    maxZoom: 10, 
+    minZoom: 2, 
+  }).setView([0, 0], 2);
+
+  
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Colorea las regiones según la propiedad 'coralblchp'
+  L.geoJSON(geoJsonData, {
+    style: feature => {
+      const coralblchp = feature.properties.coralblchp;
+      return {
+        fillColor: getColor(coralblchp),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+      };
+    },
+    onEachFeature: (feature, layer) => {
+      layer.bindPopup(feature.properties.popup_text);
+    }
+  }).addTo(map);
+}
+
+
+function getColor(coralblchp) {
+   return coralblchp === -9998.0 ? 'gray' :
+         coralblchp < 0 ? 'black' :
+         coralblchp < 5 ? 'red' :
+         'green';
+}
+
+  </script>
 
   <script type="module">
     let data2;
