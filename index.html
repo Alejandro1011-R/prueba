@@ -435,52 +435,52 @@
 
   
   <script type="module">
-    let data;
-fetch('./coordinates.json').then(response => response.json()).then(dat => {
-  data = dat;
-});
+    let percent_corals;
 
-
-
-data.then(createMap);
-
-function createMap(geoJsonData) {
-  const map = L.map('map', {
-    maxZoom: 10, 
-    minZoom: 2, 
-  }).setView([0, 0], 2);
-
-  
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  // Colorea las regiones según la propiedad 'coralblchp'
-  L.geoJSON(geoJsonData, {
-    style: feature => {
-      const coralblchp = feature.properties.coralblchp;
-      return {
-        fillColor: getColor(coralblchp),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-      };
-    },
-    onEachFeature: (feature, layer) => {
-      layer.bindPopup(feature.properties.popup_text);
+    fetch('./coordinates.json')
+      .then(response => response.json())
+      .then(dat => {
+        percent_corals = dat;
+        createMap(percent_corals);
+      })
+      .catch(error => console.error('Error al cargar el JSON:', error));
+    
+    function createMap(geoJsonData) {
+      const map = L.map('map', {
+        maxZoom: 10,
+        minZoom: 2,
+      }).setView([0, 0], 2);
+    
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+    
+      // Colorea las regiones según la propiedad 'coralblchp'
+      L.geoJSON(geoJsonData, {
+        style: feature => {
+          const coralblchp = feature.properties.coralblchp;
+          return {
+            fillColor: getColor(coralblchp),
+            weight: 2,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.7
+          };
+        },
+        onEachFeature: (feature, layer) => {
+          layer.bindPopup(feature.properties.popup_text);
+        }
+      }).addTo(map);
     }
-  }).addTo(map);
-}
-
-
-function getColor(coralblchp) {
-   return coralblchp === -9998.0 ? 'gray' :
-         coralblchp < 0 ? 'black' :
-         coralblchp < 5 ? 'red' :
-         'green';
-}
+    
+    function getColor(coralblchp) {
+      return coralblchp === -9998.0 ? 'gray' :
+        coralblchp < 0 ? 'black' :
+        coralblchp < 5 ? 'red' :
+        'green';
+    }
+    
 
   </script>
 
