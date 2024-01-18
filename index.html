@@ -434,13 +434,14 @@
   <script type="module" src="script.js"></script>
 
   
-  <script type="module" src="graphic.js"></script>
-
   <script type="module">
-    let data;
-fetch('coordinates.json').then(response => response.json()).then(dat => {
-  data = dat;
-});
+    const data = getData();
+
+async function getData() {
+  const data = await $.getJSON('../coordinates.geojson');
+  return data;
+}
+
 
 data.then(createMap);
 
@@ -482,8 +483,9 @@ function getColor(coralblchp) {
          'green';
 }
 
-
   </script>
+
+  <script type="module" src="grafico3.js"></script>
 
   <script type="module">
     let data2;
