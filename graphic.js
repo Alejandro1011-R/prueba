@@ -1,11 +1,9 @@
 const data = getData();
-fetch('coordinates.json')
-      .then(response => response.json())
-      .then(dataa => {
-          data = dataa;
-          updateGraph();
-      });
 
+async function getData() {
+  const data = await $.getJSON('coordinates.geojson');
+  return data;
+}
 
 
 data.then(createMap);

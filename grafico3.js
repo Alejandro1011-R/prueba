@@ -1,11 +1,9 @@
 const data = getData();
-fetch('caracteristicas.json')
-      .then(response => response.json())
-      .then(dataa => {
-          data = dataa;
-          updateGraph();
-      });
 
+async function getData() {
+  const data = await $.getJSON('caracteristicas.json');
+  return data;
+}
 
 
 data.then(result => {

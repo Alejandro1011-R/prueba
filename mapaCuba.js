@@ -1,12 +1,9 @@
 const data2 = getData2();
 
-fetch('location.json')
-      .then(response => response.json())
-      .then(dataa => {
-          data = dataa;
-          updateGraph();
-      });
-
+async function getData2() {
+  const data = await $.getJSON('location.json');
+  return data;
+}
 
 const cubaCenter = [21.5218, -77.7812];
 

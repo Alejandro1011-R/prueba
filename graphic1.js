@@ -1,13 +1,10 @@
 
 const data = getData();
 
-fetch('oceanos.json')
-      .then(response => response.json())
-      .then(dataa => {
-          data = dataa;
-          updateGraph();
-      });
-
+async function getData() {
+  const data = await $.getJSON('oceanos.json');
+  return data;
+}
 
 data.then(result => {
   const buttonsDiv = document.getElementById('buttons');
