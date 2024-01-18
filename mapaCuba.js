@@ -1,9 +1,9 @@
-const data2 = getData2();
+let data;
 
-async function getData2() {
-  const data = await $.getJSON('https://github.com/AleTheCreation/Coral-Bleaching/blob/main/location.json');
-  return data;
-}
+
+fetch('location.json').then(response => response.json()).then(dataa => {
+  data = dataa;
+});
 
 const cubaCenter = [21.5218, -77.7812];
 

@@ -1,10 +1,10 @@
 
-const data = getData();
+let data;
 
-async function getData() {
-  const data = await $.getJSON('https://github.com/AleTheCreation/Coral-Bleaching/blob/main/oceanos.json');
-  return data;
-}
+
+fetch('oceanos.json').then(response => response.json()).then(dataa => {
+  data = dataa;
+});
 
 data.then(result => {
   const buttonsDiv = document.getElementById('buttons');

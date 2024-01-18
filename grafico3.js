@@ -1,9 +1,11 @@
-const data = getData();
 
-async function getData() {
-  const data = await $.getJSON('https://github.com/AleTheCreation/Coral-Bleaching/blob/main/caracteristicas.json');
-  return data;
-}
+
+let data;
+
+
+fetch('caracteristicas.json').then(response => response.json()).then(dataa => {
+  data = dataa;
+});
 
 
 data.then(result => {

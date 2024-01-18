@@ -35,142 +35,7 @@
     }
   </style>
 
-
-
-
-  <title>Blanqueamiento de corales</title>
- 
-</head>
-
-
-<body>
-    
   
-  
- 
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-  <script src="https://unpkg.com/leaflet.zoomify/dist/leaflet.zoomify.js"></script>
-  <script src="https://unpkg.com/leaflet.vectorgrid/dist/Leaflet.VectorGrid.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-
-  <button id="btn">
-    
-  </button>
-
-  <div class="image">
-    <img src="title_img.jpg" alt="corales">
-    <h2>El blanqueamiento de los corales, un problema grave en la actualidad.</h2>
-  </div>
-
-<div id="introduction-container">
-  <p>Un coral arrecifal es una colonia de pólipos que forman estructuras calcáreas y que cubren la matriz rocosa de fondos marinos tropicales y subtropicales por lo que tienden a soportar temperaturas entre 20°C y 30°C. El desarrollo de los arrecifes se debe principalmente al crecimiento y superposición de los esqueletos de los corales. Este proceso de calcificación del esqueleto a partir de la absorción de carbonatos del agua de mar es estimulado por algas unicelulares dependientes de la luz, que viven en simbiosis dentro del tejido del coral y que reciben el nombre de zooxantelas. </p>
-  <p>Debido a la presencia de las zooxantelas, los corales pétreos para su crecimiento necesitan de la luz solar, de esta forma, la profundidad límite de los arrecifes dependerá de la transparencia del agua, y por lo general, disminuye su presencia por debajo de los 30 metros. Igualmente, los corales requieren de un fondo duro donde sus larvas puedan fijarse y desarrollarse. Los arrecifes coralinos precisan de aguas agitadas o constantemente renovadas para que los organismos inmóviles puedan alimentarse y llevar a cabo sus funciones fisiológicas. </p>
-  <p>Los arrecifes coralinos ecosistemas muy delicados que se ven amenazados por diferentes factores de estrés, tanto de origen natural como humano un ejemplo de las amenazas que tiene actualmente es la eutrofización pues la fertilización excesiva perjudica a los arrecifes al disminuir los niveles de iluminación a causa de la proliferación del fitoplancton. La sobrepesca es otro factor, este favorece la proliferación de algas porque la eliminación o disminución de las poblaciones de especies herbívoras, como los peces loros y barberos, puede favorecer el aumento excesivo de especies bio - erosionantes o que se alimentan de los propios corales, causando igualmente importante daño al arrecife. Existen otros ejemplos como la contaminación, la sedimentación, la acidificación del océano y el cambio climático, este último ha causado daños significativos debido al incremento anómalo de la temperatura del mar dando lugar al blanqueamiento de corales.   </p>
-</div>
-  <div id="image-container">
-    
-  </div>
-
-  <div id="txt1"><p>Transición de coral sano - coral blanqueado - coral muerto</p></div>
-  
-  <input type="range" id="slider" min="0" max="100" value="0">
-
-  <div id="coral-blanqueado1">
-    <p>Los arrecifes de coral de todo el mundo se enfrentan a un rápido deterioro debido al blanqueamiento esto ocurre cuando los simbiontes se encuentran en condiciones adversas como altas temperaturas provocando la ruptura de la simbiosis lo que puede verse exacerbado por la invasión de patógenos inducida por el estrés térmico. Las respuestas al estrés y la aptitud de los corales son muy complejas debido a su relación simbiótica con una microbiota diversa que comprende algas, bacterias, hongos, arqueas, protistas y virus simbióticos. </p>
-  </div>
-
-  
-  <div id="button2" class="btn">
-    
-  </div>
-
-  
-  <div id="pie-container" class="chart-container"></div>
-
-  <div id="coral-blanqueado2">
-    <p>Durante este proceso se ven afectadas significativamente la composición de simbiontes, y se evidencia la dominancia en las comunidades de bacterias en los corales ya blanqueados. Los simbiontes experimentan alteraciones funcionales en respuesta al estrés por calor estas alteraciones dan como resultado un metabolismo energético anormal, lo que potencialmente podría comprometer la salud y la resistencia de los simbiontes. Las altas temperaturas también brindan claras ventajas para los patógenos de los corales, lo que lleva a un aumento de las enfermedades en el coral.</p>
-    <p>Cuando las anomalías térmicas son severas, incluso los corales centenarios pueden blanquearse. En contraste, cuando las anomalías térmicas son menos intensas, el blanqueamiento es altamente selectivo, con un amplio espectro de respuestas de los corales resistentes versus especies susceptibles.    </p>
-    <p>En la siguientes gráficas se puede observar el análisis hecho de las temperaturas oceánicas promedio en diferentes años en cinco zonas relevantes. Luego del análisis de las gráficas podemos llegar a los datos siguientes:</p>
-    <p>- La temperatura promedio en el Mar Rojo es 26.09 °C y su temperatura máxima se registró en el Norte y centro del mar Rojo en el año 1998 y es 33.03 °C</p>
-    <p>- La temperatura promedio en el Golfo Arábico es 29.90°C y su temperatura máxima se alcanzó en el Golfo Pérsico en 1998 y es 37.44 °C</p>
-<p>- La temperatura promedio en el océano Atlántico es 28.48°C y su temperatura máxima se alcanzó Cayo de Bahamas y Florida en el 2011 y es 33.30 °C.
-</p>
-<p>- La temperatura promedio en el océano Índico es 28.35 °C y su temperatura máxima se alcanzó en Islas Mascareñas el 2010 y es 34.20°C
-</p>
-<p>- La temperatura promedio en el océano Pacífico es 28.33 °C y su temperatura máxima se alcanzó en la Bahía de Milne, Papúa Nueva Guinea en el 2010 y es 33.80°C.
-</p>
-      </div>
-
-
-  
-  
-
-
-
-  
-
-  <div id="buttons" class= "btn">
-    
-  </div>
-  
-  <div id="chartContainer"></div>
-  <div id="temp">
-    <p>Temperaturas oceánicas</p>
-  </div>
-  <div id="importancia">
-    <p>El valor ecológico de los arrecifes coralinos es considerable ya que constituyen el área vital de refugio o reproducción de gran cantidad de especies de aguas continentales e insulares, incluyendo las comerciales. Poseen gran valor intrínseco por su carácter único en sus formas y procesos, así como su composición y diversidad. Albergan la cuarta parte de las especies del globo terráqueo, de ello se desprende una gran importancia educacional, científica y ética.</p>
-    <p>Brindan una efectiva protección sobre las costas frente a la posible erosión generada por la energía del oleaje. Muchísimos cayos y ecosistemas costeros, como manglares, dunas de playas y pastos marinos, existen gracias a la presencia de esas rompientes arrecifales, así como numerosos poblados y edificaciones de las costas. Este ecosistema es fuente de una gran variedad de recursos pesqueros, entre ellos la langosta y peces como los pargos y los meros. Se estima que los arrecifes coralinos aportan entre el 10 y 12% de las pesquerías totales de los países tropicales, y entre el 20 y el 25 % si se trata sólo de la pesquería de peces. Más de 200 especies comerciales provienen de los arrecifes de la región del Gran Caribe.</p>
-    <p>Las especies presentes en los arrecifes coralinos son fuente de sustancias biológicamente activas. Estas sustancias se emplean como fármacos a partir de sus propiedades antibióticas, antivirales, anticancerígenas, hipotensoras, antiinflamatorias, antiasmáticas, anti herpéticas, antiartríticas y como reactivos de interés bioquímico y experimental.</p>
-    <p>Numerosos son los productos que como materia prima sirven para la elaboración de vistosos y codiciados objetos de artesanía y bisutería. Los arrecifes coralinos constituyen una de las principales fábricas de la arena que nutre las playas y que también se emplea en la construcción. </p>
-    <p>La gran diversidad de fauna y flora de los arrecifes coralinos genera un paisaje submarino de extraordinario valor estético, el cual resulta de gran trascendencia socioeconómica para los países tropicales. Esto los convierte en lugares con alta demanda turística internacional, por lo tanto, resulta un recurso natural explotable económicamente en la actualidad y en el futuro, siempre que se maneje correctamente.</p>
-    <p>A continuación se presentan los por cientos de corales blanqueados por regiones ecológicas</p>
-  </div>
-  <div id="map" style="height: 500px;"></div>
-  <div id="mapa">
-    <p>Mapa mundial</p>
-  </div>
-
-  <div id = "Cuba">
-    <p>Los arrecifes coralinos en Cuba presentan diferentes grados de deterioro tanto los arrecifes de crestas como frontales por lo que se están volviendo menos efectivas como refugio para peces y como disipadoras del oleaje, a causa de la pérdida de complejidad estructural. A lo largo de las últimas cuatro décadas la complejidad arquitectónica del arrecife se está destruyendo más rápido de lo previsto en todo el Gran Caribe, ya que los esqueletos remanentes de los corales que van muriendo sufren erosión acelerada. Debido a este proceso, los arrecifes van dejando de ejercer sus funciones ecológicas (refugio para depredadores y presas, protección de la base rocosa del arrecife, etc.) y de brindar sus servicios ambientales (protección costera, pesca, turismo, etc). La disminución del cubrimiento vivo del fondo por corales pétreos constituye una pérdida de hábitat y afectación al ciclo de vida de numerosas especies arrecifales.
-    </p> <p>Los reportes de blanqueamiento en Cuba comenzaron desde 1983, y en el presente siglo el blanqueamiento se ha generalizado y con reportes de mayor intensidad tanto en Cuba como el Gran Caribe. A pesar de la intensidad con que ha ocurrido el blanqueamiento en numerosos puntos del país, los reportes han indicado una marcada tendencia a la recuperación de los corales, con algunos casos aislados de mortalidad moderada. La Red de Monitoreo Voluntario de Alerta Temprana de Arrecifes Coralinos involucra a centros de buceo, áreas protegidas, centros de investigación y colaboradores comunitarios. A partir de su creación en el marco del Proyecto PNUD/GEF Sabana-Camagüey, con la Agencia de Medio Ambiente del CITMA, el Ministerio de Turismo y el Instituto de Oceanología de Cuba, se obtiene información sobre el estado de los arrecifes coralinos a nivel nacional. 
-    </p><p>Para evitar el incremento de este proceso se debe tener en cuenta lo siguiente:
-    </p><p>1. Evitar causar daños directos a los corales durante el blanqueamiento, como levantamiento de sedimentos o fracturas. Cumplir con las regulaciones ambientales de buceo y suspender el buceo en áreas con corales blanqueados en casos extremos.
-    </p><p>2. Minimizar otros impactos humanos en los arrecifes, como la contaminación, la pesca excesiva, el uso de artes de pesca dañinas, la introducción de especies exóticas y la extracción de corales. Promover la lectura y aplicación de medidas correspondientes a través de manuales y capacitaciones.
-    </p><p> 3. Establecer áreas protegidas marinas en arrecifes que raramente sufren blanqueamiento o que tienen una mayor capacidad de recuperación. Declarar los centros de buceo como áreas de protección obligada para contribuir a la conectividad entre arrecifes y favorecer el reabastecimiento de larvas de coral.
-    </p><p>4. Fortalecer el monitoreo profesional y de voluntarios para comprender el estado de salud de los arrecifes, los procesos que lo determinan, y las necesidades de manejo. Evaluar la eficacia de las medidas de manejo y determinar qué arrecifes deben ser incluidos en áreas protegidas.
-    </p><p>A continuación se encuentra el mapa de Cuba donde se representan los por cientos de blanqueamiento de los corales.</p>
-    </div>
-  
-
-  <div id="map2"></div>
-
-  <div id="mapa2">
-    <p>Mapa de Cuba</p>
-    </div>
-
-  
-<div id = "conclusion">
-  <p>La sinergia entre el incremento de la temperatura superficial del mar, y el actualmente discreto (pero probablemente sostenido y gradual) incremento del nivel del mar, aumenta el riesgo de pérdida de biodiversidad, principalmente de los arrecifes de coral por lo que es necesario continuar los estudios sobre este tema.
-  </p>
-</div>
-
-  
- 
-  <script type="module" src="graphic1.js"></script>
-
-  <script type="module" src="script.js"></script>
-
-  
-  <script type="module" src="graphic.js"></script>
-
-  <script type="module" src="grafico3.js"></script>
-
-  <script type="module" src="mapaCuba.js"></script>
-
   <style>
     body {
       display: flex;
@@ -425,6 +290,141 @@
       transform: translateY(2px);
     }
   </style>
+
+
+  <title>Blanqueamiento de corales</title>
+ 
+</head>
+
+
+<body>
+    
+  
+  
+ 
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script src="https://unpkg.com/leaflet.zoomify/dist/leaflet.zoomify.js"></script>
+  <script src="https://unpkg.com/leaflet.vectorgrid/dist/Leaflet.VectorGrid.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+  <button id="btn">
+    
+  </button>
+
+  <div class="image">
+    <img src="title_img.jpg" alt="corales">
+    <h2>El blanqueamiento de los corales, un problema grave en la actualidad.</h2>
+  </div>
+
+<div id="introduction-container">
+  <p>Un coral arrecifal es una colonia de pólipos que forman estructuras calcáreas y que cubren la matriz rocosa de fondos marinos tropicales y subtropicales por lo que tienden a soportar temperaturas entre 20°C y 30°C. El desarrollo de los arrecifes se debe principalmente al crecimiento y superposición de los esqueletos de los corales. Este proceso de calcificación del esqueleto a partir de la absorción de carbonatos del agua de mar es estimulado por algas unicelulares dependientes de la luz, que viven en simbiosis dentro del tejido del coral y que reciben el nombre de zooxantelas. </p>
+  <p>Debido a la presencia de las zooxantelas, los corales pétreos para su crecimiento necesitan de la luz solar, de esta forma, la profundidad límite de los arrecifes dependerá de la transparencia del agua, y por lo general, disminuye su presencia por debajo de los 30 metros. Igualmente, los corales requieren de un fondo duro donde sus larvas puedan fijarse y desarrollarse. Los arrecifes coralinos precisan de aguas agitadas o constantemente renovadas para que los organismos inmóviles puedan alimentarse y llevar a cabo sus funciones fisiológicas. </p>
+  <p>Los arrecifes coralinos ecosistemas muy delicados que se ven amenazados por diferentes factores de estrés, tanto de origen natural como humano un ejemplo de las amenazas que tiene actualmente es la eutrofización pues la fertilización excesiva perjudica a los arrecifes al disminuir los niveles de iluminación a causa de la proliferación del fitoplancton. La sobrepesca es otro factor, este favorece la proliferación de algas porque la eliminación o disminución de las poblaciones de especies herbívoras, como los peces loros y barberos, puede favorecer el aumento excesivo de especies bio - erosionantes o que se alimentan de los propios corales, causando igualmente importante daño al arrecife. Existen otros ejemplos como la contaminación, la sedimentación, la acidificación del océano y el cambio climático, este último ha causado daños significativos debido al incremento anómalo de la temperatura del mar dando lugar al blanqueamiento de corales.   </p>
+</div>
+  <div id="image-container">
+    
+  </div>
+
+  <div id="txt1"><p>Transición de coral sano - coral blanqueado - coral muerto</p></div>
+  
+  <input type="range" id="slider" min="0" max="100" value="0">
+
+  <div id="coral-blanqueado1">
+    <p>Los arrecifes de coral de todo el mundo se enfrentan a un rápido deterioro debido al blanqueamiento esto ocurre cuando los simbiontes se encuentran en condiciones adversas como altas temperaturas provocando la ruptura de la simbiosis lo que puede verse exacerbado por la invasión de patógenos inducida por el estrés térmico. Las respuestas al estrés y la aptitud de los corales son muy complejas debido a su relación simbiótica con una microbiota diversa que comprende algas, bacterias, hongos, arqueas, protistas y virus simbióticos. </p>
+  </div>
+
+  
+  <div id="button2" class="btn">
+    
+  </div>
+
+  
+  <div id="pie-container" class="chart-container"></div>
+
+  <div id="coral-blanqueado2">
+    <p>Durante este proceso se ven afectadas significativamente la composición de simbiontes, y se evidencia la dominancia en las comunidades de bacterias en los corales ya blanqueados. Los simbiontes experimentan alteraciones funcionales en respuesta al estrés por calor estas alteraciones dan como resultado un metabolismo energético anormal, lo que potencialmente podría comprometer la salud y la resistencia de los simbiontes. Las altas temperaturas también brindan claras ventajas para los patógenos de los corales, lo que lleva a un aumento de las enfermedades en el coral.</p>
+    <p>Cuando las anomalías térmicas son severas, incluso los corales centenarios pueden blanquearse. En contraste, cuando las anomalías térmicas son menos intensas, el blanqueamiento es altamente selectivo, con un amplio espectro de respuestas de los corales resistentes versus especies susceptibles.    </p>
+    <p>En la siguientes gráficas se puede observar el análisis hecho de las temperaturas oceánicas promedio en diferentes años en cinco zonas relevantes. Luego del análisis de las gráficas podemos llegar a los datos siguientes:</p>
+    <p>- La temperatura promedio en el Mar Rojo es 26.09 °C y su temperatura máxima se registró en el Norte y centro del mar Rojo en el año 1998 y es 33.03 °C</p>
+    <p>- La temperatura promedio en el Golfo Arábico es 29.90°C y su temperatura máxima se alcanzó en el Golfo Pérsico en 1998 y es 37.44 °C</p>
+<p>- La temperatura promedio en el océano Atlántico es 28.48°C y su temperatura máxima se alcanzó Cayo de Bahamas y Florida en el 2011 y es 33.30 °C.
+</p>
+<p>- La temperatura promedio en el océano Índico es 28.35 °C y su temperatura máxima se alcanzó en Islas Mascareñas el 2010 y es 34.20°C
+</p>
+<p>- La temperatura promedio en el océano Pacífico es 28.33 °C y su temperatura máxima se alcanzó en la Bahía de Milne, Papúa Nueva Guinea en el 2010 y es 33.80°C.
+</p>
+      </div>
+
+
+  
+  
+
+
+
+  
+
+  <div id="buttons" class= "btn">
+    
+  </div>
+  
+  <div id="chartContainer"></div>
+  <div id="temp">
+    <p>Temperaturas oceánicas</p>
+  </div>
+  <div id="importancia">
+    <p>El valor ecológico de los arrecifes coralinos es considerable ya que constituyen el área vital de refugio o reproducción de gran cantidad de especies de aguas continentales e insulares, incluyendo las comerciales. Poseen gran valor intrínseco por su carácter único en sus formas y procesos, así como su composición y diversidad. Albergan la cuarta parte de las especies del globo terráqueo, de ello se desprende una gran importancia educacional, científica y ética.</p>
+    <p>Brindan una efectiva protección sobre las costas frente a la posible erosión generada por la energía del oleaje. Muchísimos cayos y ecosistemas costeros, como manglares, dunas de playas y pastos marinos, existen gracias a la presencia de esas rompientes arrecifales, así como numerosos poblados y edificaciones de las costas. Este ecosistema es fuente de una gran variedad de recursos pesqueros, entre ellos la langosta y peces como los pargos y los meros. Se estima que los arrecifes coralinos aportan entre el 10 y 12% de las pesquerías totales de los países tropicales, y entre el 20 y el 25 % si se trata sólo de la pesquería de peces. Más de 200 especies comerciales provienen de los arrecifes de la región del Gran Caribe.</p>
+    <p>Las especies presentes en los arrecifes coralinos son fuente de sustancias biológicamente activas. Estas sustancias se emplean como fármacos a partir de sus propiedades antibióticas, antivirales, anticancerígenas, hipotensoras, antiinflamatorias, antiasmáticas, anti herpéticas, antiartríticas y como reactivos de interés bioquímico y experimental.</p>
+    <p>Numerosos son los productos que como materia prima sirven para la elaboración de vistosos y codiciados objetos de artesanía y bisutería. Los arrecifes coralinos constituyen una de las principales fábricas de la arena que nutre las playas y que también se emplea en la construcción. </p>
+    <p>La gran diversidad de fauna y flora de los arrecifes coralinos genera un paisaje submarino de extraordinario valor estético, el cual resulta de gran trascendencia socioeconómica para los países tropicales. Esto los convierte en lugares con alta demanda turística internacional, por lo tanto, resulta un recurso natural explotable económicamente en la actualidad y en el futuro, siempre que se maneje correctamente.</p>
+    <p>A continuación se presentan los por cientos de corales blanqueados por regiones ecológicas</p>
+  </div>
+  <div id="map" style="height: 500px;"></div>
+  <div id="mapa">
+    <p>Mapa mundial</p>
+  </div>
+
+  <div id = "Cuba">
+    <p>Los arrecifes coralinos en Cuba presentan diferentes grados de deterioro tanto los arrecifes de crestas como frontales por lo que se están volviendo menos efectivas como refugio para peces y como disipadoras del oleaje, a causa de la pérdida de complejidad estructural. A lo largo de las últimas cuatro décadas la complejidad arquitectónica del arrecife se está destruyendo más rápido de lo previsto en todo el Gran Caribe, ya que los esqueletos remanentes de los corales que van muriendo sufren erosión acelerada. Debido a este proceso, los arrecifes van dejando de ejercer sus funciones ecológicas (refugio para depredadores y presas, protección de la base rocosa del arrecife, etc.) y de brindar sus servicios ambientales (protección costera, pesca, turismo, etc). La disminución del cubrimiento vivo del fondo por corales pétreos constituye una pérdida de hábitat y afectación al ciclo de vida de numerosas especies arrecifales.
+    </p> <p>Los reportes de blanqueamiento en Cuba comenzaron desde 1983, y en el presente siglo el blanqueamiento se ha generalizado y con reportes de mayor intensidad tanto en Cuba como el Gran Caribe. A pesar de la intensidad con que ha ocurrido el blanqueamiento en numerosos puntos del país, los reportes han indicado una marcada tendencia a la recuperación de los corales, con algunos casos aislados de mortalidad moderada. La Red de Monitoreo Voluntario de Alerta Temprana de Arrecifes Coralinos involucra a centros de buceo, áreas protegidas, centros de investigación y colaboradores comunitarios. A partir de su creación en el marco del Proyecto PNUD/GEF Sabana-Camagüey, con la Agencia de Medio Ambiente del CITMA, el Ministerio de Turismo y el Instituto de Oceanología de Cuba, se obtiene información sobre el estado de los arrecifes coralinos a nivel nacional. 
+    </p><p>Para evitar el incremento de este proceso se debe tener en cuenta lo siguiente:
+    </p><p>1. Evitar causar daños directos a los corales durante el blanqueamiento, como levantamiento de sedimentos o fracturas. Cumplir con las regulaciones ambientales de buceo y suspender el buceo en áreas con corales blanqueados en casos extremos.
+    </p><p>2. Minimizar otros impactos humanos en los arrecifes, como la contaminación, la pesca excesiva, el uso de artes de pesca dañinas, la introducción de especies exóticas y la extracción de corales. Promover la lectura y aplicación de medidas correspondientes a través de manuales y capacitaciones.
+    </p><p> 3. Establecer áreas protegidas marinas en arrecifes que raramente sufren blanqueamiento o que tienen una mayor capacidad de recuperación. Declarar los centros de buceo como áreas de protección obligada para contribuir a la conectividad entre arrecifes y favorecer el reabastecimiento de larvas de coral.
+    </p><p>4. Fortalecer el monitoreo profesional y de voluntarios para comprender el estado de salud de los arrecifes, los procesos que lo determinan, y las necesidades de manejo. Evaluar la eficacia de las medidas de manejo y determinar qué arrecifes deben ser incluidos en áreas protegidas.
+    </p><p>A continuación se encuentra el mapa de Cuba donde se representan los por cientos de blanqueamiento de los corales.</p>
+    </div>
+  
+
+  <div id="map2"></div>
+
+  <div id="mapa2">
+    <p>Mapa de Cuba</p>
+    </div>
+
+  
+<div id = "conclusion">
+  <p>La sinergia entre el incremento de la temperatura superficial del mar, y el actualmente discreto (pero probablemente sostenido y gradual) incremento del nivel del mar, aumenta el riesgo de pérdida de biodiversidad, principalmente de los arrecifes de coral por lo que es necesario continuar los estudios sobre este tema.
+  </p>
+</div>
+
+  
+ 
+  <script type="module" src="graphic1.js"></script>
+
+  <script type="module" src="script.js"></script>
+
+  
+  <script type="module" src="graphic.js"></script>
+
+  <script type="module" src="grafico3.js"></script>
+
+  <script type="module" src="mapaCuba.js"></script>
+
 </body>
 </html>
 
