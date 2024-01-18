@@ -1,6 +1,6 @@
 
 let data;
-fetch('oceanos.json').then(response => response.json()).then(dat => {
+fetch('./oceanos.json').then(response => response.json()).then(dat => {
   data = dat;
 });
 
