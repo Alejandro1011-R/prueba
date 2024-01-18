@@ -1,15 +1,7 @@
-const data2 = getData2();
-
-async function getData2() {
-  try {
-    const response = await fetch('./location.geojson'); // Ruta relativa
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error al cargar el archivo coordinates.geojson:', error);
-    return null;
-  }
-}
+let data;
+fetch('location.json').then(response => response.json()).then(dat => {
+  data = dat;
+});
 
 const cubaCenter = [21.5218, -77.7812];
 
