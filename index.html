@@ -437,7 +437,7 @@
   <script type="module">
     let percent_corals;
 
-    fetch('./coordinates.json')
+    fetch('./coordinates.geojson')
       .then(response => response.json())
       .then(dat => {
         percent_corals = dat;
