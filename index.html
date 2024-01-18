@@ -437,13 +437,10 @@
   <script type="module" src="graphic.js"></script>
 
   <script type="module">
-    const data = getData();
-
-async function getData() {
-  const data = await $.getJSON('../coordinates.geojson');
-  return data;
-}
-
+    let data;
+fetch('coordinates.json').then(response => response.json()).then(dat => {
+  data = dat;
+});
 
 data.then(createMap);
 
@@ -484,6 +481,7 @@ function getColor(coralblchp) {
          coralblchp < 5 ? 'red' :
          'green';
 }
+
 
   </script>
 
