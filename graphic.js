@@ -1,9 +1,16 @@
-let data;
+const data = getData();
 
+async function getData() {
+  try {
+    const response = await fetch('./coordinates.geojson'); // Ruta relativa
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error al cargar el archivo coordinates.geojson:', error);
+    return null;
+  }
+}
 
-fetch('coordinates.json').then(response => response.json()).then(dataa => {
-  data = dataa;
-});
 
 data.then(createMap);
 
