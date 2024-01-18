@@ -59,6 +59,7 @@
   
   <style>
     body {
+      display: flex;
      display: contents;
     
       
@@ -247,20 +248,21 @@
       
     }
     #chartContainer2 {
-      flex-direction: row;
-      flex-wrap: wrap;
+      
        justify-content: space-around; 
-      align-items: stretch; 
-      margin: 20px; 
+      align-items: flex-start; 
+       
+      margin-left: 200px;
+      margin-right: 200px;
       padding: 10px;
-     
+      overflow: hidden;
       
     }
 
-    .class-chart-container{
-      display: flex;
-      flex-direction: row;
-
+    .class-chart-container {
+      display: inline-block;
+      justify-content: space-around;
+      margin-right: 10px;
     }
     
     
@@ -269,54 +271,6 @@
     
     
     
-
-    .btn {
-      align-items: center;
-      appearance: none;
-      background-color: #EEF2FF;
-      border-radius: 8px;
-      border-width: 2px;
-      border-color: #536DFE;
-      box-shadow: rgba(83, 109, 254, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-      box-sizing: border-box;
-      color: #536DFE;
-      cursor: pointer;
-      display: inline-flex;
-      font-family: "JetBrains Mono", monospace;
-      height: 56px;
-      justify-content: center;
-      line-height: 1;
-      list-style: none;
-      overflow: hidden;
-      padding-left: 24px;
-      padding-right: 24px;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      transition: box-shadow 0.15s, transform 0.15s;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-      white-space: nowrap;
-      will-change: box-shadow, transform;
-      font-size: 20px;
-      white-space: pre-line;
-    }
-    
-    .btn:focus {
-      outline: none;
-      box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(83, 109, 254, 0.4) 0 2px 4px, rgba(83, 109, 254, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    }
-    
-    .btn:hover {
-      box-shadow: rgba(83, 109, 254, 0.3) 0 4px 8px, rgba(83, 109, 254, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-      transform: translateY(-2px);
-    }
-    
-    .btn:active {
-      box-shadow: #D6D6E7 0 3px 7px inset;
-      transform: translateY(2px);
-    }
   </style>
 
 
@@ -333,9 +287,7 @@
 
 
 
-  <button id="btn">
-    
-  </button>
+  
 
   <div class="image">
     <img src="title_img.jpg" alt="corales">
@@ -357,12 +309,13 @@
 
   <div id="coral-blanqueado1">
     <p>Los arrecifes de coral de todo el mundo se enfrentan a un rápido deterioro debido al blanqueamiento esto ocurre cuando los simbiontes se encuentran en condiciones adversas como altas temperaturas provocando la ruptura de la simbiosis lo que puede verse exacerbado por la invasión de patógenos inducida por el estrés térmico. Las respuestas al estrés y la aptitud de los corales son muy complejas debido a su relación simbiótica con una microbiota diversa que comprende algas, bacterias, hongos, arqueas, protistas y virus simbióticos. </p>
+    <p>Los siguientes gráficos muestran las características de un coral sano y de un coral blanqueado, en ese orden.</p>
   </div>
 
+
+
   
-  <div id="button2">
-    
-  </div>
+  
 
   
   <div id="chartContainer2" class="charts-container"></div>
@@ -649,8 +602,7 @@ fetch('./caracteristicas.json')
     chartContainer.className = 'class-chart-container';
   
     const graphic = document.createElement('canvas');
-    graphic.width = 150; 
-    graphic.height = 150; 
+    
     chartContainer.appendChild(graphic);
   
     const ctx = graphic.getContext("2d");
