@@ -1,0 +1,36 @@
+{
+    "Coral_Sano" : [
+        {
+            "Coral" : "81,33",
+            "Bacteria" : "11,01",
+            "Symbiodiniaceae" : "1,78",
+            "Otras Metazoas" : "1,60",
+            "Virus" : "0,57",
+            "Eukaryotic Algae" : "0,13",
+            "Archaea" : "0,03",
+            "Viridiplantae" : "0,10",
+            "Fungi" : "0,06",
+            "Otras Eukaryota" : "0,05"
+
+
+        }
+
+    ],
+    "Coral_Blanqueado" : [
+        {
+            "Coral" : "6,75",
+            "Bacteria" : "81,01",
+            "Symbiodiniaceae" : "0,20",
+            "Otras Metazoas" : "9,35",
+            "Virus" : "0,15",
+            "Eukaryotic Algae" : "0,69",
+            "Archaea" : "0,13",
+            "Viridiplantae" : "0,51",
+            "Fungi" : "0,83",
+            "Otras Eukaryota" : "0,06"
+
+
+        }
+
+    ]
+}
