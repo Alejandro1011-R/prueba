@@ -429,9 +429,140 @@
 
   
  
-  <script type="module" src="graphic1.js"></script>
+  <script type="module">
+    let temperaturas_oc;
 
-  <script type="module" src="script.js"></script>
+fetch('./oceanos.json')
+  .then(response => response.json())
+  .then(dat => {
+    temperaturas_oc = dat;
+    createCharts(temperaturas_oc);
+  })
+  .catch(error => console.error('Error al cargar el JSON:', error));
+
+function createCharts(result) {
+  const buttonsDiv = document.getElementById('buttons');
+  const chartContainer = document.getElementById('chartContainer');
+
+  Object.keys(result).forEach(className => {
+    const button = createButton(className, chartContainer);
+    buttonsDiv.appendChild(button);
+
+    const chart = createChart(className, result[className]);
+    chartContainer.appendChild(chart);
+
+    button.classList.add('btn');
+  });
+}
+
+function createButton(className, chartContainer) {
+  const button = document.createElement('button');
+  button.textContent = `${className}`;
+  button.addEventListener('click', () => {
+    // Ocultar todos los gráficos
+    const allCharts = document.querySelectorAll('.class-chart');
+    allCharts.forEach(chart => chart.style.display = 'none');
+
+    // Mostrar el gráfico correspondiente
+    const chartToShow = document.getElementById(`chart-${className}`);
+    chartToShow.style.display = 'block';
+  });
+
+  return button;
+}
+
+function createChart(className, classData) {
+  const chartContainer = document.createElement('div');
+  chartContainer.className = 'class-chart-container';
+
+  const graphic = document.createElement('canvas');
+  graphic.width = 400;
+  graphic.height = 300;
+  chartContainer.appendChild(graphic);
+
+  const ctx = graphic.getContext("2d");
+  const gradient = ctx.createLinearGradient(0, 0, 0, graphic.height);
+  gradient.addColorStop(0, 'rgba(255, 255, 0, 0.5)');
+  gradient.addColorStop(1, 'rgba(255, 0, 0, 0.8)');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: classData.map(item => item.año),
+      datasets: [{
+        label: 'Temperatura',
+        backgroundColor: gradient,
+        borderColor: 'rgba(255, 0, 0, 1)',
+        borderWidth: 2,
+        data: classData.map(item => parseFloat(item.temperaturas.replace(',', '.'))),
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: false
+        }
+      }
+    }
+  });
+
+  chartContainer.style.display = 'none';
+  chartContainer.id = `chart-${className}`;
+  chartContainer.className = 'class-chart';
+
+  return chartContainer;
+}
+
+  </script>
+
+  <script type="module">
+    
+
+const imageContainer = document.getElementById('image-container');
+const slider = document.getElementById('slider');
+const numberOfImages = 36;
+const imageFolderPath = './images/'; 
+const imagePrefix = 'ezgif-frame-0'; 
+
+// Función para cargar y mostrar una imagen en el contenedor
+function showImage(imageNumber) {
+  const imageURL = `${imageFolderPath}${imagePrefix}${imageNumber}.jpg`;
+  const imageElement = document.createElement('img');
+  imageElement.src = imageURL;
+  imageElement.alt = `Imagen ${imageNumber}`;
+
+  
+
+  // Limpia el contenedor antes de agregar una nueva imagen
+  imageContainer.innerHTML = '';
+
+ 
+  imageContainer.appendChild(imageElement);
+}
+
+function loadLastImageDimensions() {
+    const lastImage = new Image();
+    lastImage.src = `${imageFolderPath}${imagePrefix}${numberOfImages}.jpg`;
+  
+    lastImage.onload = function() {
+      imageContainer.style.width = lastImage.width + 'px';
+      imageContainer.style.height = lastImage.height + 'px';
+    };
+  }
+  
+
+
+showImage(1);
+
+slider.addEventListener('input', () => {
+  const percentage = slider.value;
+  const currentImage = Math.floor((percentage / 100) * numberOfImages) + 1;
+  showImage(currentImage);
+});
+
+
+
+  </script>
 
   
   <script type="module">
@@ -484,7 +615,106 @@
 
   </script>
 
-  <script type="module" src="grafico3.js"></script>
+  <script type="module">
+    let corales_caract;
+
+fetch('./caracteristicas.json')
+  .then(response => response.json())
+  .then(dat => {
+    corales_caract = dat;
+    createCharts(corales_caract);
+  })
+  .catch(error => console.error('Error al cargar el JSON:', error));
+
+function createCharts(data) {
+  const pieContainer = document.getElementById('pie-container');
+  const buttonContainer = document.getElementById('button2');
+  
+  const chartsContainer = document.createElement('div');
+  chartsContainer.className = 'charts-container';
+  
+  // Crear gráficos y agregarlos al contenedor
+  Object.keys(data).forEach(className => {
+    const chart = createChart(className, data[className][0]);
+    chartsContainer.appendChild(chart);
+  });
+  
+  pieContainer.appendChild(chartsContainer);
+  
+  // Crear el botón y asignar evento de alternancia
+  const button = createToggleButton(chartsContainer, data);
+  buttonContainer.appendChild(button);
+}
+
+function createChart(className, classData) {
+  const chartContainer = document.createElement('div');
+  chartContainer.className = 'class-chart-container';
+  
+  const graphic = document.createElement('canvas');
+  chartContainer.appendChild(graphic);
+  
+  const ctx = graphic.getContext("2d");
+  
+  const labels = Object.keys(classData);
+  const data = Object.values(classData).map(value => parseFloat(value.replace(',', '.')));
+  
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: labels,
+      datasets: [{
+        backgroundColor: getRandomColors(labels.length),
+        data: data,
+      }]
+    },
+    options: {
+      plugins: {
+        datalabels: {
+          formatter: (value, context) => '', // Evitar que aparezcan las descripciones de los colores
+        }
+      },
+      tooltips: {
+        enabled: false, // Desactivar las tooltips predeterminadas
+        custom: (tooltipModel) => {
+          // Código de tooltips
+        },
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      aspectRatio: 1,
+    }
+  });
+  
+  chartContainer.id = `chart-${className}`;
+  chartContainer.className = 'class-chart';
+  
+  return chartContainer;
+}
+
+function getRandomColors(numColors) {
+  const colors = [];
+  for (let i = 0; i < numColors; i++) {
+    const hue = (i * 137.508) % 360;
+    colors.push(`hsl(${hue}, 70%, 50%)`);
+  }
+  return colors;
+}
+
+function createToggleButton(chartsContainer, data) {
+  const button = document.createElement('button');
+  button.textContent = 'Cambiar Gráficas';
+  button.addEventListener('click', () => {
+    // Código para alternar entre gráficas
+  });
+  
+  return button;
+}
+
+function toggleChart() {
+  // Código para alternar entre gráficas
+}
+
+  </script>
 
   <script type="module">
     let data2;
