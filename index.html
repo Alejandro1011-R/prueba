@@ -435,12 +435,11 @@
 
   
   <script type="module">
-    const data = getData();
+    let data;
+fetch('coordinates.json').then(response => response.json()).then(dat => {
+  data = dat;
+});
 
-async function getData() {
-  const data = await $.getJSON('../coordinates.geojson');
-  return data;
-}
 
 
 data.then(createMap);
