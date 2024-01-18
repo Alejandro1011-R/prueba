@@ -1,33 +1,4 @@
 let data2;
-fetch('./location.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(dat => {
-    data2 = dat;
-    if (result && result.locations) {
-      result.locations.forEach(element => {
-        const { latitud, longitud, percent_bleaching, name } = element;
-        const color = getColorForBleaching(parseFloat(percent_bleaching.replace(',', '.')));
-  
-        // Usa la opción 'radius' en lugar de 'radius' directamente
-        L.circle([parseFloat(latitud.replace(',', '.')), parseFloat(longitud.replace(',', '.'))], {
-          radius: 100,  // Ajusta el valor según tus preferencias
-          fillColor: color,
-          color: color,
-          weight: 7,    // Sin borde
-          opacity: 1,
-          fillOpacity: 0.8
-        }).addTo(map2).bindPopup('Zona: ' + name + ', Por ciento de blanqueamiento: ' + percent_bleaching + '%');
-      });
-    } else {
-      console.error('El objeto locations es undefined o no está definido.');
-    }
-  })
-  .catch(error => console.error('Error al cargar el JSON:', error));
 
 const cubaCenter = [21.5218, -77.7812];
 
@@ -51,4 +22,33 @@ const getColorForBleaching = percent => {
   const b = Math.min(255, Math.max(0, 0));
   return `rgb(${r}, ${g}, ${b})`;
 };
+
+
+fetch('./location.json')
+  .then(response => response.json())
+  .then(dat => {
+    data2 = dat;
+
+    // Mueve el código que utiliza 'result' aquí
+    if (data2 && data2.locations) {
+      data2.locations.forEach(element => {
+        const { latitud, longitud, percent_bleaching, name } = element;
+        const color = getColorForBleaching(parseFloat(percent_bleaching.replace(',', '.')));
+
+        L.circle([parseFloat(latitud.replace(',', '.')), parseFloat(longitud.replace(',', '.'))], {
+          radius: 100,
+          fillColor: color,
+          color: color,
+          weight: 7,
+          opacity: 1,
+          fillOpacity: 0.8
+        }).addTo(map2).bindPopup('Zona: ' + name + ', Por ciento de blanqueamiento: ' + percent_bleaching + '%');
+      });
+    } else {
+      console.error('El objeto locations es undefined o no está definido.');
+    }
+  })
+  .catch(error => console.error('Error al cargar el JSON:', error));
+
+
 
