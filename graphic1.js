@@ -2,7 +2,7 @@
 const data = getData();
 
 async function getData() {
-  const data = await $.getJSON('oceanos.json');
+  const data = await $.getJSON('https://github.com/AleTheCreation/Coral-Bleaching/blob/main/oceanos.json');
   return data;
 }
 

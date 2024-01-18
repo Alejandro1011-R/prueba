@@ -1,7 +1,7 @@
 const data = getData();
 
 async function getData() {
-  const data = await $.getJSON('coordinates.geojson');
+  const data = await $.getJSON('https://github.com/AleTheCreation/Coral-Bleaching/blob/main/coordinates.geojson');
   return data;
 }
 

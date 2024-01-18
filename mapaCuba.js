@@ -1,7 +1,7 @@
 const data2 = getData2();
 
 async function getData2() {
-  const data = await $.getJSON('location.json');
+  const data = await $.getJSON('https://github.com/AleTheCreation/Coral-Bleaching/blob/main/location.json');
   return data;
 }
 
